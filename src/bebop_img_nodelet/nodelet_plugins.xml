@@ -1,0 +1,7 @@
+<library path="lib/img_sub">
+  <class name="bebop_img_nodelet/img_sub" type="bebop_img_nodelet::img_sub" base_class_type="nodelet::Nodelet">
+  <description>
+  This is image subscription nodelet.
+  </description>
+  </class>
+</library>

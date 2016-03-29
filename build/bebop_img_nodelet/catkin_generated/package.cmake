@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "bebop_img_nodelet")
+set(bebop_img_nodelet_MAINTAINER "eve <eve@todo.todo>")
+set(bebop_img_nodelet_DEPRECATED "")
+set(bebop_img_nodelet_VERSION "0.0.0")
+set(bebop_img_nodelet_BUILD_DEPENDS "roscpp" "rospy" "std_msgs" "nodelet")
+set(bebop_img_nodelet_RUN_DEPENDS "nodelet" "roscpp" "rospy" "std_msgs")
+set(bebop_img_nodelet_BUILDTOOL_DEPENDS "catkin")

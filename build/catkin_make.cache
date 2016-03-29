@@ -1,0 +1,2 @@
+bebop_img:bebop_img_nodelet
+-DCATKIN_DEVEL_PREFIX=/home/eve/code_ws/devel -DCMAKE_INSTALL_PREFIX=/home/eve/code_ws/install -G Unix Makefiles

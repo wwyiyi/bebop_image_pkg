@@ -1,0 +1,8 @@
+prefix=/home/eve/code_ws/install
+
+Name: bebop_img
+Description: Description of bebop_img
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/eve/code_ws/install/lib 
+Requires: 

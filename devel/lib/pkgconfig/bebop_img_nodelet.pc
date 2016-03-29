@@ -1,0 +1,8 @@
+prefix=/home/eve/code_ws/devel
+
+Name: bebop_img_nodelet
+Description: Description of bebop_img_nodelet
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/eve/code_ws/devel/lib 
+Requires: 
