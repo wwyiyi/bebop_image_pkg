@@ -155,6 +155,34 @@ int main(int argc, char **argv)
             cout << "An exception occurred. Exception no. " << e << "\n";
         }
     }
+    else if(str_input.compare("r") == 0)
+    {
+        geometry_msgs::Twist twist;
+        twist.linear.y = 0.5;
+        pilot_pub.publish(twist);
+        ros::spinOnce();
+    }
+    else if(str_input.compare("l") == 0)
+    {
+        geometry_msgs::Twist twist;
+        twist.linear.y = -0.5;
+        pilot_pub.publish(twist);
+        ros::spinOnce();
+    }
+    else if(str_input.compare("f") == 0)
+    {
+        geometry_msgs::Twist twist;
+        twist.linear.x = 0.5;
+        pilot_pub.publish(twist);
+        ros::spinOnce();
+    }
+    else if(str_input.compare("b") == 0)
+    {
+        geometry_msgs::Twist twist;
+        twist.linear.x = -0.5;
+        pilot_pub.publish(twist);
+        ros::spinOnce();
+    }
     else
     {
       /*cout << "gaz: up/down\npitch: forward/backward\nyaw: rotate\n roll: left/righ\n";
