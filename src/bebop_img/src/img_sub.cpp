@@ -69,6 +69,28 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                 pilot_pub.publish(twist);
                 ros::spinOnce();
             }
+            else
+            {
+                //change distance
+                if((heightLeft + heightRight)/2 >= 200) 
+                {
+                  //move backward
+                    geometry_msgs::Twist twist;
+                    twist.linear.x = -0.1;
+                    pilot_pub.publish(twist);
+                    ros::spinOnce();
+                    cout << "move backward\n";
+                }
+                else if((heightRight + heightLeft)/2 <= 100)
+                {
+                  //move forward
+                    geometry_msgs::Twist twist;
+                    twist.linear.x = 0.1;
+                    pilot_pub.publish(twist);
+                    ros::spinOnce();
+                    cout << "move forward\n";
+                }
+            }
 
             //check rotate or horizontal move
             if(!atCenter((heightLeft + heightRight)/2, centerUpper, centerWidth, 0.5) || !atCenter((heightLeft + heightRight)/2, centerBottom, centerWidth, 0.5))
@@ -80,7 +102,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                     {
                         //rotate counterclockwise
                         geometry_msgs::Twist twist;
-                        twist.angular.z = 0.2;
+                        twist.angular.z = 0.3;
                         pilot_pub.publish(twist);
                         ros::spinOnce();
                         cout << "not center: rotate counterclockwise\n";
@@ -104,7 +126,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                     {
                         //rotate clockwise
                         geometry_msgs::Twist twist;
-                        twist.angular.z = -0.2;
+                        twist.angular.z = -0.3;
                         pilot_pub.publish(twist);
                         ros::spinOnce();
                         cout << "not center: rotate clockwise\n";
@@ -177,3 +199,4 @@ int main(int argc, char **argv)
     cv::destroyWindow("Traces");
     cv::destroyWindow("QR");
 }
+
