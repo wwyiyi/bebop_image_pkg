@@ -209,6 +209,20 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 # Convenience name for target.
+bebop_img/CMakeFiles/img_disp.dir/rule:
+	cd /home/eve/code_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bebop_img/CMakeFiles/img_disp.dir/rule
+.PHONY : bebop_img/CMakeFiles/img_disp.dir/rule
+
+# Convenience name for target.
+img_disp: bebop_img/CMakeFiles/img_disp.dir/rule
+.PHONY : img_disp
+
+# fast build rule for target.
+img_disp/fast:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_disp.dir/build.make bebop_img/CMakeFiles/img_disp.dir/build
+.PHONY : img_disp/fast
+
+# Convenience name for target.
 bebop_img/CMakeFiles/img_sub.dir/rule:
 	cd /home/eve/code_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bebop_img/CMakeFiles/img_sub.dir/rule
 .PHONY : bebop_img/CMakeFiles/img_sub.dir/rule
@@ -460,6 +474,30 @@ std_msgs_generate_messages_py/fast:
 	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/std_msgs_generate_messages_py.dir/build.make bebop_img/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
+src/img_disp.o: src/img_disp.cpp.o
+.PHONY : src/img_disp.o
+
+# target to build an object file
+src/img_disp.cpp.o:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_disp.dir/build.make bebop_img/CMakeFiles/img_disp.dir/src/img_disp.cpp.o
+.PHONY : src/img_disp.cpp.o
+
+src/img_disp.i: src/img_disp.cpp.i
+.PHONY : src/img_disp.i
+
+# target to preprocess a source file
+src/img_disp.cpp.i:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_disp.dir/build.make bebop_img/CMakeFiles/img_disp.dir/src/img_disp.cpp.i
+.PHONY : src/img_disp.cpp.i
+
+src/img_disp.s: src/img_disp.cpp.s
+.PHONY : src/img_disp.s
+
+# target to generate assembly for a file
+src/img_disp.cpp.s:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_disp.dir/build.make bebop_img/CMakeFiles/img_disp.dir/src/img_disp.cpp.s
+.PHONY : src/img_disp.cpp.s
+
 src/img_sub.o: src/img_sub.cpp.o
 .PHONY : src/img_sub.o
 
@@ -519,6 +557,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... img_disp"
 	@echo "... img_sub"
 	@echo "... install"
 	@echo "... install/local"
@@ -543,6 +582,9 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... test"
+	@echo "... src/img_disp.o"
+	@echo "... src/img_disp.i"
+	@echo "... src/img_disp.s"
 	@echo "... src/img_sub.o"
 	@echo "... src/img_sub.i"
 	@echo "... src/img_sub.s"

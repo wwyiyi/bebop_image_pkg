@@ -6,6 +6,8 @@ bebop_img/CMakeFiles/img_sub.dir/src/img_sub.cpp.o: /home/eve/code_ws/src/bebop_
 bebop_img/CMakeFiles/img_sub.dir/src/img_sub.cpp.o: /opt/ros/jade/include/XmlRpcDecl.h
 bebop_img/CMakeFiles/img_sub.dir/src/img_sub.cpp.o: /opt/ros/jade/include/XmlRpcValue.h
 bebop_img/CMakeFiles/img_sub.dir/src/img_sub.cpp.o: /opt/ros/jade/include/cv_bridge/cv_bridge.h
+bebop_img/CMakeFiles/img_sub.dir/src/img_sub.cpp.o: /opt/ros/jade/include/geometry_msgs/Twist.h
+bebop_img/CMakeFiles/img_sub.dir/src/img_sub.cpp.o: /opt/ros/jade/include/geometry_msgs/Vector3.h
 bebop_img/CMakeFiles/img_sub.dir/src/img_sub.cpp.o: /opt/ros/jade/include/image_transport/camera_publisher.h
 bebop_img/CMakeFiles/img_sub.dir/src/img_sub.cpp.o: /opt/ros/jade/include/image_transport/camera_subscriber.h
 bebop_img/CMakeFiles/img_sub.dir/src/img_sub.cpp.o: /opt/ros/jade/include/image_transport/exception.h

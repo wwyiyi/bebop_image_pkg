@@ -14,7 +14,7 @@ iostream
 cmath
 -
 
-/home/eve/code_ws/src/bebop_img/src/img_sub.cpp
+/home/eve/code_ws/src/bebop_img/src/img_disp.cpp
 ros/ros.h
 -
 image_transport/image_transport.h

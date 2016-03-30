@@ -29,15 +29,21 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
 {
   try
   {
-    /*cv::imshow("view", cv_bridge::toCvShare(msg, "bgr8")->image); 
+    //cv::imshow("Image", cv_bridge::toCvShare(msg, "bgr8")->image); 
+
+    /*
     Mat img = cv_bridge::toCvCopy(msg, "bgr8")->image;
     Mat imgBW;
     cvtColor(img, imgBW, CV_BGR2GRAY);
     threshold(imgBW, imgBW, 128, 255, THRESH_BINARY);
     cv::imshow("grayView", imgBW);*/
-    Mat img = cv_bridge::toCvCopy(msg, "bgr8")->image;
+    Mat img = cv_bridge::toCvCopy(msg, "bgr8")->image; 
+
+
+
     vector<Point2f> corners = findRegion(img);
 
+    /*
     if(corners.size() == 4)
     {
         float heightLeft = corners[3].y - corners[0].y;
@@ -63,7 +69,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
             ros::spinOnce();
         }
 
-    }
+    }*/
 
     cv::waitKey(30);
   }
@@ -80,16 +86,9 @@ int main(int argc, char **argv)
   cv::namedWindow("Image");
   cv::startWindowThread();
 
-  cv::namedWindow("Traces");
-  cv::startWindowThread();
-
-  cv::namedWindow("QR");
-  cv::startWindowThread();
   image_transport::ImageTransport it(nh);
   image_transport::Subscriber sub = it.subscribe("bebop/image_raw", 1, imageCallback);
   pilot_pub = nh.advertise<geometry_msgs::Twist>("bebop/cmd_vel", 1000);
   ros::spin();
   cv::destroyWindow("Image");
-  cv::destroyWindow("Traces");
-  cv::destroyWindow("QR");
 }

@@ -16,13 +16,6 @@ const int CV_QR_EAST = 1;
 const int CV_QR_SOUTH = 2;
 const int CV_QR_WEST = 3;
 
-typedef struct {
-	int upperLeft;
-	int upperRight;
-	int bottomLeft;
-	int bottomRight;
-	bool found;
-}
 
 float cv_distance(Point2f P, Point2f Q);					// Get Distance between two points
 float cv_lineEquation(Point2f L, Point2f M, Point2f J);		// Perpendicular Distance of a Point J from line formed by Points L and M; Solution to equation of the line Val = ax+by+c 
@@ -35,7 +28,7 @@ float cross(Point2f v1,Point2f v2);
 
 // Start of Main Loop
 //------------------------------------------------------------------------------------------------------------------------
-int findRegion (Mat image)
+vector<Point2f> findRegion (Mat image)
 {
 	// Creation of Intermediate 'Image' Objects required later
 	Mat gray(image.size(), CV_MAKETYPE(image.depth(), 1));			// To hold Grayscale Image
@@ -45,6 +38,9 @@ int findRegion (Mat image)
 	    
 	vector<vector<Point> > contours;
 	vector<Vec4i> hierarchy;
+
+	//return matrix
+	vector<Point2f> src,dst;	
 
 	int mark,A,B,C,top,right,bottom,median1,median2,outlier;
 	float AB,BC,CA, dist,slope, areat,arear,areab, large, padding;
@@ -62,7 +58,8 @@ int findRegion (Mat image)
 		qr_raw = Mat::zeros(100, 100, CV_8UC3 );
 	   	qr = Mat::zeros(100, 100, CV_8UC3 );
 		qr_gray = Mat::zeros(100, 100, CV_8UC1);
-	   	qr_thres = Mat::zeros(100, 100, CV_8UC1);		
+	   	qr_thres = Mat::zeros(100, 100, CV_8UC1);
+	   		
 		
 		// capture >> image;				// For Video input		// Capture Image from Image Input
 
@@ -187,7 +184,7 @@ int findRegion (Mat image)
 				vector<Point2f> L,M,O, tempL,tempM,tempO;
 				Point2f N;	
 
-				vector<Point2f> src,dst;		// src - Source Points basically the 4 end co-ordinates of the overlay image
+				//vector<Point2f> src,dst;		// src - Source Points basically the 4 end co-ordinates of the overlay image
 												// dst - Destination Points to transform overlay image	
 
 				Mat warp_matrix;
@@ -207,6 +204,8 @@ int findRegion (Mat image)
 				src.push_back(M[1]);
 				src.push_back(N);
 				src.push_back(O[3]);
+
+	// extract qr code
 	
 	/*			dst.push_back(Point2f(0,0));
 				dst.push_back(Point2f(qr.cols,0));
@@ -309,7 +308,7 @@ int findRegion (Mat image)
 
 	}	// End of 'while' loop
 
-	return 0;
+	return src;
 }
 
 // End of Main Loop

@@ -192,7 +192,11 @@ include_directories(
 
 add_executable(piloting src/piloting.cpp)
 add_executable(img_sub src/img_sub.cpp)
+add_executable(img_disp src/img_disp.cpp)
+
 target_link_libraries(img_sub ${catkin_LIBRARIES}
+			      ${OpenCV_LIBRARIES})
+target_link_libraries(img_disp ${catkin_LIBRARIES}
 			      ${OpenCV_LIBRARIES})
 target_link_libraries(piloting ${catkin_LIBRARIES})
 

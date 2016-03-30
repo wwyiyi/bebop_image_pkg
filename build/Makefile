@@ -309,6 +309,19 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named img_disp
+
+# Build rule for target.
+img_disp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 img_disp
+.PHONY : img_disp
+
+# fast build rule for target.
+img_disp/fast:
+	$(MAKE) -f bebop_img/CMakeFiles/img_disp.dir/build.make bebop_img/CMakeFiles/img_disp.dir/build
+.PHONY : img_disp/fast
+
+#=============================================================================
 # Target rules for targets named img_sub
 
 # Build rule for target.
@@ -567,6 +580,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... img_disp"
 	@echo "... img_sub"
 	@echo "... piloting"
 	@echo "... roscpp_generate_messages_cpp"
