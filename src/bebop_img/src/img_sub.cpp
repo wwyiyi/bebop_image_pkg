@@ -53,7 +53,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
             float centerWidth = 320.0;
 
             //check height
-            if(!atCenter(heightLeft, centerLeft, centerHeight, 0.2) || !atCenter(heightRight, centerRight, centerHeight, 0.2))
+            if(!atCenter(heightLeft, centerLeft, centerHeight, 0.3) || !atCenter(heightRight, centerRight, centerHeight, 0.3))
             {
                 geometry_msgs::Twist twist;
                 if(centerLeft <= centerHeight)
@@ -189,14 +189,11 @@ int main(int argc, char **argv)
     cv::namedWindow("Traces");
     cv::startWindowThread();
 
-    cv::namedWindow("QR");
-    cv::startWindowThread();
     image_transport::ImageTransport it(nh);
     image_transport::Subscriber sub = it.subscribe("bebop/image_raw", 1, imageCallback);
     pilot_pub = nh.advertise<geometry_msgs::Twist>("bebop/cmd_vel", 1000);
     ros::spin();
     cv::destroyWindow("Image");
     cv::destroyWindow("Traces");
-    cv::destroyWindow("QR");
 }
 
