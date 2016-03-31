@@ -8,6 +8,7 @@
 /home/eve/code_ws/build/bebop_img/CMakeFiles/geometry_msgs_generate_messages_py.dir
 /home/eve/code_ws/build/gtest/CMakeFiles/gtest.dir
 /home/eve/code_ws/build/gtest/CMakeFiles/gtest_main.dir
+/home/eve/code_ws/build/bebop_img/CMakeFiles/img_canny.dir
 /home/eve/code_ws/build/bebop_img/CMakeFiles/img_disp.dir
 /home/eve/code_ws/build/bebop_img/CMakeFiles/img_sub.dir
 /home/eve/code_ws/build/bebop_img/CMakeFiles/piloting.dir

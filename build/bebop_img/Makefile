@@ -209,6 +209,20 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 # Convenience name for target.
+bebop_img/CMakeFiles/img_canny.dir/rule:
+	cd /home/eve/code_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bebop_img/CMakeFiles/img_canny.dir/rule
+.PHONY : bebop_img/CMakeFiles/img_canny.dir/rule
+
+# Convenience name for target.
+img_canny: bebop_img/CMakeFiles/img_canny.dir/rule
+.PHONY : img_canny
+
+# fast build rule for target.
+img_canny/fast:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_canny.dir/build.make bebop_img/CMakeFiles/img_canny.dir/build
+.PHONY : img_canny/fast
+
+# Convenience name for target.
 bebop_img/CMakeFiles/img_disp.dir/rule:
 	cd /home/eve/code_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bebop_img/CMakeFiles/img_disp.dir/rule
 .PHONY : bebop_img/CMakeFiles/img_disp.dir/rule
@@ -474,6 +488,30 @@ std_msgs_generate_messages_py/fast:
 	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/std_msgs_generate_messages_py.dir/build.make bebop_img/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
+src/img_canny.o: src/img_canny.cpp.o
+.PHONY : src/img_canny.o
+
+# target to build an object file
+src/img_canny.cpp.o:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_canny.dir/build.make bebop_img/CMakeFiles/img_canny.dir/src/img_canny.cpp.o
+.PHONY : src/img_canny.cpp.o
+
+src/img_canny.i: src/img_canny.cpp.i
+.PHONY : src/img_canny.i
+
+# target to preprocess a source file
+src/img_canny.cpp.i:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_canny.dir/build.make bebop_img/CMakeFiles/img_canny.dir/src/img_canny.cpp.i
+.PHONY : src/img_canny.cpp.i
+
+src/img_canny.s: src/img_canny.cpp.s
+.PHONY : src/img_canny.s
+
+# target to generate assembly for a file
+src/img_canny.cpp.s:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_canny.dir/build.make bebop_img/CMakeFiles/img_canny.dir/src/img_canny.cpp.s
+.PHONY : src/img_canny.cpp.s
+
 src/img_disp.o: src/img_disp.cpp.o
 .PHONY : src/img_disp.o
 
@@ -557,6 +595,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... img_canny"
 	@echo "... img_disp"
 	@echo "... img_sub"
 	@echo "... install"
@@ -582,6 +621,9 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... test"
+	@echo "... src/img_canny.o"
+	@echo "... src/img_canny.i"
+	@echo "... src/img_canny.s"
 	@echo "... src/img_disp.o"
 	@echo "... src/img_disp.i"
 	@echo "... src/img_disp.s"

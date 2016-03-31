@@ -309,6 +309,19 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named img_canny
+
+# Build rule for target.
+img_canny: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 img_canny
+.PHONY : img_canny
+
+# fast build rule for target.
+img_canny/fast:
+	$(MAKE) -f bebop_img/CMakeFiles/img_canny.dir/build.make bebop_img/CMakeFiles/img_canny.dir/build
+.PHONY : img_canny/fast
+
+#=============================================================================
 # Target rules for targets named img_disp
 
 # Build rule for target.
@@ -580,6 +593,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... img_canny"
 	@echo "... img_disp"
 	@echo "... img_sub"
 	@echo "... piloting"
