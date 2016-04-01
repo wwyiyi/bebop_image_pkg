@@ -48,6 +48,7 @@ vector<Point2f> squareRegion (Mat image)
 	int key = 0;
 	while(key != 'q')				// While loop to query for Image Input frame
 	{
+		key = 'q';
 
 		traces = Scalar(0,0,0);
 		qr_raw = Mat::zeros(100, 100, CV_8UC3 );
@@ -131,10 +132,10 @@ vector<Point2f> squareRegion (Mat image)
 				cv_updateCornerOr(CV_QR_NORTH, tempL, L); 			// Re-arrange marker
 
 
-				src.push_back(L[0]);
-				src.push_back(L[1]);
 				src.push_back(L[2]);
 				src.push_back(L[3]);
+				src.push_back(L[0]);
+				src.push_back(L[1]);
 
 				//Draw contours on the image
 				drawContours( image, contours, top , Scalar(255,200,0), 2, 8, hierarchy, 0 );
@@ -145,7 +146,7 @@ vector<Point2f> squareRegion (Mat image)
 		imshow ( "Image", image );
 		//imshow ( "QR code", qr_thres );
 
-		key = waitKey(500000);	// OPENCV: wait for 1ms before accessing next frame
+		//key = waitKey(500000);	// OPENCV: wait for 1ms before accessing next frame
 
 	}	// End of 'while' loop
 
