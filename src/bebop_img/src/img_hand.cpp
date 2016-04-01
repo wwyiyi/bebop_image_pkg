@@ -7,6 +7,7 @@
 #include "geometry_msgs/Twist.h"
 
 
+
 using namespace cv;
 using namespace std;
 
@@ -56,31 +57,15 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
             if(!atCenter(heightLeft, centerLeft, centerHeight, 0.3) || !atCenter(heightRight, centerRight, centerHeight, 0.3))
             {
                 geometry_msgs::Twist twist;
-                if(!atCenter(heightLeft, centerLeft, centerHeight, 0.5) || !atCenter(heightRight, centerRight, centerHeight, 0.5))
+                if(centerLeft <= centerHeight)
                 {
-                    if(centerLeft <= centerHeight)
-                    {
-                        twist.linear.z = 0.3;
-                        cout << "lower: " << centerLeft << ", " << centerRight << "\n";
-                    }
-                    else
-                    {
-                        twist.linear.z = -0.3;
-                        cout << "higher: " << centerLeft << ", " << centerRight << "\n";
-                    }
+                    twist.linear.z = 0.2;
+                    cout << "lower: " << centerLeft << ", " << centerRight << "\n";
                 }
                 else
                 {
-                    if(centerLeft <= centerHeight)
-                    {
-                        twist.linear.z = 0.2;
-                        cout << "lower: " << centerLeft << ", " << centerRight << "\n";
-                    }
-                    else
-                    {
-                        twist.linear.z = -0.2;
-                        cout << "higher: " << centerLeft << ", " << centerRight << "\n";
-                    }
+                    twist.linear.z = -0.2;
+                    cout << "higher: " << centerLeft << ", " << centerRight << "\n";
                 }
                 pilot_pub.publish(twist);
                 ros::spinOnce();
@@ -92,28 +77,10 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                 {
                   //move backward
                     geometry_msgs::Twist twist;
-                    twist.linear.x = -0.2;
-                    pilot_pub.publish(twist);
-                    ros::spinOnce();
-                    cout << "move backward\n";
-                }
-                else if((heightRight + heightLeft)/2 >= 190)
-                {
-                  //move forward
-                    geometry_msgs::Twist twist;
                     twist.linear.x = -0.1;
                     pilot_pub.publish(twist);
                     ros::spinOnce();
-                    cout << "move forward\n";
-                }
-                else if((heightRight + heightLeft)/2 <= 90)
-                {
-                  //move forward
-                    geometry_msgs::Twist twist;
-                    twist.linear.x = 0.2;
-                    pilot_pub.publish(twist);
-                    ros::spinOnce();
-                    cout << "move forward\n";
+                    cout << "move backward\n";
                 }
                 else if((heightRight + heightLeft)/2 <= 100)
                 {
@@ -132,21 +99,11 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                 if(centerUpper < centerWidth)
                 {
                   //benchmark in left 
-                    if(heightLeft > heightRight*1.1) 
+                    if(heightLeft > heightRight*1.05) 
                     {
                         //rotate counterclockwise
                         geometry_msgs::Twist twist;
                         twist.angular.z = 0.3;
-                        pilot_pub.publish(twist);
-                        ros::spinOnce();
-                        cout << "not center: rotate counterclockwise\n";
-                        cout << centerUpper << "\n";
-                    }
-                    else if(heightLeft > heightRight*1.05) 
-                    {
-                        //rotate counterclockwise
-                        geometry_msgs::Twist twist;
-                        twist.angular.z = 0.2;
                         pilot_pub.publish(twist);
                         ros::spinOnce();
                         cout << "not center: rotate counterclockwise\n";
@@ -166,21 +123,11 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                 else
                 {
                     //benchmark in right
-                    if(heightRight > heightLeft*1.1) 
+                    if(heightRight > heightLeft*1.05) 
                     {
                         //rotate clockwise
                         geometry_msgs::Twist twist;
                         twist.angular.z = -0.3;
-                        pilot_pub.publish(twist);
-                        ros::spinOnce();
-                        cout << "not center: rotate clockwise\n";
-                        cout << centerUpper << "\n";
-                    }
-                    else if(heightRight > heightLeft*1.05) 
-                    {
-                        //rotate clockwise
-                        geometry_msgs::Twist twist;
-                        twist.angular.z = -0.2;
                         pilot_pub.publish(twist);
                         ros::spinOnce();
                         cout << "not center: rotate clockwise\n";
