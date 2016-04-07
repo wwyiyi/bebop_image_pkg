@@ -194,6 +194,8 @@ add_executable(piloting src/piloting.cpp)
 add_executable(img_sub src/img_sub.cpp)
 add_executable(img_disp src/img_disp.cpp)
 add_executable(img_canny src/img_canny.cpp)
+add_executable(img_hand src/img_hand.cpp)
+add_executable(img_perspective src/img_perspective.cpp)
 
 
 
@@ -204,4 +206,10 @@ target_link_libraries(img_disp ${catkin_LIBRARIES}
 target_link_libraries(piloting ${catkin_LIBRARIES})
 target_link_libraries(img_canny ${catkin_LIBRARIES}
 			      ${OpenCV_LIBRARIES})
+target_link_libraries(img_hand ${catkin_LIBRARIES}
+			      ${OpenCV_LIBRARIES})
+
+target_link_libraries(img_perspective ${catkin_LIBRARIES}
+			      ${OpenCV_LIBRARIES})
+
 

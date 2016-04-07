@@ -335,6 +335,32 @@ img_disp/fast:
 .PHONY : img_disp/fast
 
 #=============================================================================
+# Target rules for targets named img_hand
+
+# Build rule for target.
+img_hand: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 img_hand
+.PHONY : img_hand
+
+# fast build rule for target.
+img_hand/fast:
+	$(MAKE) -f bebop_img/CMakeFiles/img_hand.dir/build.make bebop_img/CMakeFiles/img_hand.dir/build
+.PHONY : img_hand/fast
+
+#=============================================================================
+# Target rules for targets named img_perspective
+
+# Build rule for target.
+img_perspective: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 img_perspective
+.PHONY : img_perspective
+
+# fast build rule for target.
+img_perspective/fast:
+	$(MAKE) -f bebop_img/CMakeFiles/img_perspective.dir/build.make bebop_img/CMakeFiles/img_perspective.dir/build
+.PHONY : img_perspective/fast
+
+#=============================================================================
 # Target rules for targets named img_sub
 
 # Build rule for target.
@@ -595,6 +621,8 @@ help:
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... img_canny"
 	@echo "... img_disp"
+	@echo "... img_hand"
+	@echo "... img_perspective"
 	@echo "... img_sub"
 	@echo "... piloting"
 	@echo "... roscpp_generate_messages_cpp"

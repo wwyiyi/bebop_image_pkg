@@ -58,8 +58,9 @@ vector<Point2f> squareRegion (Mat image)
 
 		// capture >> image;				// For Video input		// Capture Image from Image Input
 
-		cvtColor(image,gray,CV_RGB2GRAY);		// Convert Image captured from Image Input to GrayScale
-		Canny(gray, edges, 100 , 200, 3);		// Apply Canny edge detection on the gray image
+		cvtColor(image,gray,CV_RGB2GRAY);
+		blur( gray, gray, Size(3,3) );		// Convert Image captured from Image Input to GrayScale
+		Canny(gray, edges, 150 , 250, 3);		// Apply Canny edge detection on the gray image
 
 
 		findContours( edges, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE); // Find contours with hierarchy
@@ -73,7 +74,8 @@ vector<Point2f> squareRegion (Mat image)
   		vector<Point2f> mc(contours.size());
 
 		for( int i = 0; i < contours.size(); i++ )
-		{	mu[i] = moments( contours[i], false );
+		{	
+			mu[i] = moments( contours[i], false );
 			mc[i] = Point2f( mu[i].m10/mu[i].m00 , mu[i].m01/mu[i].m00 );
 		}
 
@@ -116,7 +118,9 @@ vector<Point2f> squareRegion (Mat image)
 			top = A;
 			float area_top,area_right, area_bottom;
 
-			if( top < contours.size() && contourArea(contours[top]) > 10)
+
+
+			if( top < contours.size() && contourArea(contours[top]) > 2000)
 			{
 
 				vector<Point2f> L,tempL;
@@ -127,7 +131,7 @@ vector<Point2f> squareRegion (Mat image)
 
 				//Mat warp_matrix;
 
-				cv_getVertices(contours,top,10,tempL);
+				cv_getVertices(contours,top,3,tempL);
 
 				cv_updateCornerOr(CV_QR_NORTH, tempL, L); 			// Re-arrange marker
 
@@ -139,6 +143,10 @@ vector<Point2f> squareRegion (Mat image)
 
 				//Draw contours on the image
 				drawContours( image, contours, top , Scalar(255,200,0), 2, 8, hierarchy, 0 );
+				circle( image, L[0], 10,  Scalar(255,255,0), -1, 8, 0 );
+				circle( image, L[1], 10,  Scalar(0,255,0), -1, 8, 0 );
+				circle( image, L[2], 10,  Scalar(0,0,255), -1, 8, 0 );
+				circle( image, L[3], 10,  Scalar(128,128,128), -1, 8, 0 );
 
 			}
 		}

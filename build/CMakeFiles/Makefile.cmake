@@ -188,6 +188,8 @@ SET(CMAKE_DEPEND_INFO_FILES
   "bebop_img/CMakeFiles/geometry_msgs_generate_messages_py.dir/DependInfo.cmake"
   "bebop_img/CMakeFiles/img_canny.dir/DependInfo.cmake"
   "bebop_img/CMakeFiles/img_disp.dir/DependInfo.cmake"
+  "bebop_img/CMakeFiles/img_hand.dir/DependInfo.cmake"
+  "bebop_img/CMakeFiles/img_perspective.dir/DependInfo.cmake"
   "bebop_img/CMakeFiles/img_sub.dir/DependInfo.cmake"
   "bebop_img/CMakeFiles/piloting.dir/DependInfo.cmake"
   "bebop_img/CMakeFiles/roscpp_generate_messages_cpp.dir/DependInfo.cmake"

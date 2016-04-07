@@ -15,7 +15,7 @@ using namespace cv;
 using namespace std;
 
 Mat src; Mat src_gray;
-int thresh = 100;
+int thresh = 130;
 int max_thresh = 255;
 RNG rng(12345);
 
@@ -49,32 +49,32 @@ pair<Point,double> circleFromPoints(Point p1, Point p2, Point p3)
 /**
  * @function main
  */
-int main( int, char** argv )
+Point findPalm(Mat src)
 {
   /// Load source image and convert it to gray
-  src = imread( argv[1], 1 );
+  //src = imread( argv[1], 1 );
 
   /// Convert image to gray and blur it
   cvtColor( src, src_gray, COLOR_BGR2GRAY );
   blur( src_gray, src_gray, Size(3,3) );
 
   /// Create Window
-  const char* source_window = "Source";
-  namedWindow( source_window, WINDOW_AUTOSIZE );
-  imshow( source_window, src );
+  //const char* source_window = "Source";
+  //namedWindow( source_window, WINDOW_AUTOSIZE );
+  //imshow( source_window, src );
 
-  createTrackbar( " Threshold:", "Source", &thresh, max_thresh, thresh_callback );
-  thresh_callback( 0, 0 );
+  //createTrackbar( " Threshold:", "Source", &thresh, max_thresh, thresh_callback );
+  //thresh_callback( 0, 0 );
 
-  waitKey(0);
-  return(0);
-}
+  //waitKey(0);
+  //return(0);
+//}
 
 /**
  * @function thresh_callback
  */
-void thresh_callback(int, void* )
-{
+//void thresh_callback(int, void* )
+//{
   Mat src_copy = src.clone();
   Mat threshold_output;
   vector<vector<Point> > contours;
@@ -91,7 +91,7 @@ void thresh_callback(int, void* )
    vector<vector<Point> > large_contours;
   for( size_t i = 0; i < contours.size(); i++ )
   {   
-      if (contourArea(contours[i]) >= 500)
+      if (contourArea(contours[i]) >= 5000)
       {
         large_contours.push_back(contours[i]);
       }
@@ -103,6 +103,8 @@ void thresh_callback(int, void* )
 
   /// Find the convex hull object for each contour
   Point p_center;
+  Point final_center;
+  double final_radius;
   double p_radius = -1.0;
   vector<vector<Point> >hull( large_contours.size() );
   vector<vector<int> > hullsI(large_contours.size());
@@ -210,9 +212,10 @@ void thresh_callback(int, void* )
             
             no_of_fingers=min(5,no_of_fingers);
             cout<<"NO OF FINGERS: "<<no_of_fingers<<endl;
-            if (no_of_fingers <= 3)
+            if (no_of_fingers >= 3)
             {
-                p_radius = -1.0;
+                final_radius = p_radius;
+                final_center = p_center;
                 //p_center = palm_center;
             }   
           }
@@ -232,12 +235,20 @@ void thresh_callback(int, void* )
        
        if (p_radius != -1.0)
        {
-          circle(drawing,p_center,5,Scalar(144,144,255),3);
-          circle(drawing,p_center,p_radius,Scalar(144,144,255),2);
+          circle(drawing,final_center,5,Scalar(144,144,255),3);
+          circle(drawing,final_center,final_radius,Scalar(144,144,255),2);
+        }
+        else
+        {
+        	final_center.x = -1.0;
+        	final_center.y = -1.0;
         }
      }
 
   /// Show in a window
   namedWindow( "Hull demo", WINDOW_AUTOSIZE );
   imshow( "Hull demo", drawing );
+  //waitKey(0);
+  return final_center;
+  
 }

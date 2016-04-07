@@ -10,6 +10,8 @@
 /home/eve/code_ws/build/gtest/CMakeFiles/gtest_main.dir
 /home/eve/code_ws/build/bebop_img/CMakeFiles/img_canny.dir
 /home/eve/code_ws/build/bebop_img/CMakeFiles/img_disp.dir
+/home/eve/code_ws/build/bebop_img/CMakeFiles/img_hand.dir
+/home/eve/code_ws/build/bebop_img/CMakeFiles/img_perspective.dir
 /home/eve/code_ws/build/bebop_img/CMakeFiles/img_sub.dir
 /home/eve/code_ws/build/bebop_img/CMakeFiles/piloting.dir
 /home/eve/code_ws/build/bebop_img/CMakeFiles/roscpp_generate_messages_cpp.dir

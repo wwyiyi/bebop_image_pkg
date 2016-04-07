@@ -38,8 +38,48 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
         Mat img = cv_bridge::toCvCopy(msg, "bgr8")->image;
         vector<Point2f> corners = squareRegion(img);
 
+
         if(corners.size() == 4)
         {
+            
+            float max = -1.0;
+            float min = 10000000.0;
+            int index = -1;
+            int minIndex = -1;
+            vector<Point2f> ordered(4);
+            for (int i = 0; i < 4; i++) 
+            {
+            	if (corners[i].x * corners[i].x + corners[i].y * corners[i].y >= max)
+            	{
+            		max = corners[i].x * corners[i].x + corners[i].y * corners[i].y;
+            		index = i;
+            	}
+            	if (corners[i].x * corners[i].x + corners[i].y * corners[i].y <= min)
+            	{
+            		min = corners[i].x * corners[i].x + corners[i].y * corners[i].y;
+            		minIndex = i;
+            	}
+            }
+            ordered[0] = corners[minIndex];
+            ordered[2] = corners[index];
+
+            for (int i = 0; i < 4; i++)
+            {
+            	if (i != index)
+            	{
+            		if (corners[i].x <= (corners[index].x + corners[minIndex].x)/2 )
+            			ordered[3] = corners[i];
+            		else
+            			ordered[1] = corners[i];
+
+            	}
+            	
+
+            }
+            corners = ordered;
+
+            //cout << "Largest: " << index <<endl;
+
             float heightLeft = corners[3].y - corners[0].y;
             float heightRight = corners[2].y - corners[1].y;
             float centerLeft = (corners[3].y + corners[0].y)/2;
@@ -51,6 +91,8 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
             float centerUpper = (corners[1].x + corners[0].x)/2;
             float centerBottom = (corners[2].x + corners[3].x)/2;
             float centerWidth = 320.0;
+
+            cout << "top: " << centerUpper << "bottom: " << centerBottom << "left: " << centerLeft << "right: " << centerRight <<endl;
 
             //check height
             if(!atCenter(heightLeft, centerLeft, centerHeight, 0.3) || !atCenter(heightRight, centerRight, centerHeight, 0.3))
@@ -85,10 +127,10 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                 pilot_pub.publish(twist);
                 ros::spinOnce();
             }
-            else
-            {
+            //else
+            //{
                 //change distance
-                if((heightLeft + heightRight)/2 >= 200) 
+                if((heightLeft + heightRight)/2 >= 160) 
                 {
                   //move backward
                     geometry_msgs::Twist twist;
@@ -97,7 +139,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                     ros::spinOnce();
                     cout << "move backward\n";
                 }
-                else if((heightRight + heightLeft)/2 >= 190)
+                else if((heightRight + heightLeft)/2 >= 140)
                 {
                   //move forward
                     geometry_msgs::Twist twist;
@@ -106,7 +148,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                     ros::spinOnce();
                     cout << "move forward\n";
                 }
-                else if((heightRight + heightLeft)/2 <= 90)
+                else if((heightRight + heightLeft)/2 <= 60)
                 {
                   //move forward
                     geometry_msgs::Twist twist;
@@ -115,7 +157,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                     ros::spinOnce();
                     cout << "move forward\n";
                 }
-                else if((heightRight + heightLeft)/2 <= 100)
+                else if((heightRight + heightLeft)/2 <= 80)
                 {
                   //move forward
                     geometry_msgs::Twist twist;
@@ -124,7 +166,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                     ros::spinOnce();
                     cout << "move forward\n";
                 }
-            }
+            //}
 
             //check rotate or horizontal move
             if(!atCenter((heightLeft + heightRight)/2, centerUpper, centerWidth, 0.5) || !atCenter((heightLeft + heightRight)/2, centerBottom, centerWidth, 0.5))
@@ -132,11 +174,11 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                 if(centerUpper < centerWidth)
                 {
                   //benchmark in left 
-                    if(heightLeft > heightRight*1.1) 
+                    if(heightLeft > heightRight*1.15) 
                     {
                         //rotate counterclockwise
                         geometry_msgs::Twist twist;
-                        twist.angular.z = 0.3;
+                        twist.angular.z = 0.4;
                         pilot_pub.publish(twist);
                         ros::spinOnce();
                         cout << "not center: rotate counterclockwise\n";
@@ -146,7 +188,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                     {
                         //rotate counterclockwise
                         geometry_msgs::Twist twist;
-                        twist.angular.z = 0.2;
+                        twist.angular.z = 0.3;
                         pilot_pub.publish(twist);
                         ros::spinOnce();
                         cout << "not center: rotate counterclockwise\n";
@@ -166,11 +208,11 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                 else
                 {
                     //benchmark in right
-                    if(heightRight > heightLeft*1.1) 
+                    if(heightRight > heightLeft*1.15) 
                     {
                         //rotate clockwise
                         geometry_msgs::Twist twist;
-                        twist.angular.z = -0.3;
+                        twist.angular.z = -0.4;
                         pilot_pub.publish(twist);
                         ros::spinOnce();
                         cout << "not center: rotate clockwise\n";
@@ -180,7 +222,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
                     {
                         //rotate clockwise
                         geometry_msgs::Twist twist;
-                        twist.angular.z = -0.2;
+                        twist.angular.z = -0.3;
                         pilot_pub.publish(twist);
                         ros::spinOnce();
                         cout << "not center: rotate clockwise\n";

@@ -237,6 +237,34 @@ img_disp/fast:
 .PHONY : img_disp/fast
 
 # Convenience name for target.
+bebop_img/CMakeFiles/img_hand.dir/rule:
+	cd /home/eve/code_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bebop_img/CMakeFiles/img_hand.dir/rule
+.PHONY : bebop_img/CMakeFiles/img_hand.dir/rule
+
+# Convenience name for target.
+img_hand: bebop_img/CMakeFiles/img_hand.dir/rule
+.PHONY : img_hand
+
+# fast build rule for target.
+img_hand/fast:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_hand.dir/build.make bebop_img/CMakeFiles/img_hand.dir/build
+.PHONY : img_hand/fast
+
+# Convenience name for target.
+bebop_img/CMakeFiles/img_perspective.dir/rule:
+	cd /home/eve/code_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bebop_img/CMakeFiles/img_perspective.dir/rule
+.PHONY : bebop_img/CMakeFiles/img_perspective.dir/rule
+
+# Convenience name for target.
+img_perspective: bebop_img/CMakeFiles/img_perspective.dir/rule
+.PHONY : img_perspective
+
+# fast build rule for target.
+img_perspective/fast:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_perspective.dir/build.make bebop_img/CMakeFiles/img_perspective.dir/build
+.PHONY : img_perspective/fast
+
+# Convenience name for target.
 bebop_img/CMakeFiles/img_sub.dir/rule:
 	cd /home/eve/code_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bebop_img/CMakeFiles/img_sub.dir/rule
 .PHONY : bebop_img/CMakeFiles/img_sub.dir/rule
@@ -536,6 +564,54 @@ src/img_disp.cpp.s:
 	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_disp.dir/build.make bebop_img/CMakeFiles/img_disp.dir/src/img_disp.cpp.s
 .PHONY : src/img_disp.cpp.s
 
+src/img_hand.o: src/img_hand.cpp.o
+.PHONY : src/img_hand.o
+
+# target to build an object file
+src/img_hand.cpp.o:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_hand.dir/build.make bebop_img/CMakeFiles/img_hand.dir/src/img_hand.cpp.o
+.PHONY : src/img_hand.cpp.o
+
+src/img_hand.i: src/img_hand.cpp.i
+.PHONY : src/img_hand.i
+
+# target to preprocess a source file
+src/img_hand.cpp.i:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_hand.dir/build.make bebop_img/CMakeFiles/img_hand.dir/src/img_hand.cpp.i
+.PHONY : src/img_hand.cpp.i
+
+src/img_hand.s: src/img_hand.cpp.s
+.PHONY : src/img_hand.s
+
+# target to generate assembly for a file
+src/img_hand.cpp.s:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_hand.dir/build.make bebop_img/CMakeFiles/img_hand.dir/src/img_hand.cpp.s
+.PHONY : src/img_hand.cpp.s
+
+src/img_perspective.o: src/img_perspective.cpp.o
+.PHONY : src/img_perspective.o
+
+# target to build an object file
+src/img_perspective.cpp.o:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_perspective.dir/build.make bebop_img/CMakeFiles/img_perspective.dir/src/img_perspective.cpp.o
+.PHONY : src/img_perspective.cpp.o
+
+src/img_perspective.i: src/img_perspective.cpp.i
+.PHONY : src/img_perspective.i
+
+# target to preprocess a source file
+src/img_perspective.cpp.i:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_perspective.dir/build.make bebop_img/CMakeFiles/img_perspective.dir/src/img_perspective.cpp.i
+.PHONY : src/img_perspective.cpp.i
+
+src/img_perspective.s: src/img_perspective.cpp.s
+.PHONY : src/img_perspective.s
+
+# target to generate assembly for a file
+src/img_perspective.cpp.s:
+	cd /home/eve/code_ws/build && $(MAKE) -f bebop_img/CMakeFiles/img_perspective.dir/build.make bebop_img/CMakeFiles/img_perspective.dir/src/img_perspective.cpp.s
+.PHONY : src/img_perspective.cpp.s
+
 src/img_sub.o: src/img_sub.cpp.o
 .PHONY : src/img_sub.o
 
@@ -597,6 +673,8 @@ help:
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... img_canny"
 	@echo "... img_disp"
+	@echo "... img_hand"
+	@echo "... img_perspective"
 	@echo "... img_sub"
 	@echo "... install"
 	@echo "... install/local"
@@ -627,6 +705,12 @@ help:
 	@echo "... src/img_disp.o"
 	@echo "... src/img_disp.i"
 	@echo "... src/img_disp.s"
+	@echo "... src/img_hand.o"
+	@echo "... src/img_hand.i"
+	@echo "... src/img_hand.s"
+	@echo "... src/img_perspective.o"
+	@echo "... src/img_perspective.i"
+	@echo "... src/img_perspective.s"
 	@echo "... src/img_sub.o"
 	@echo "... src/img_sub.i"
 	@echo "... src/img_sub.s"

@@ -325,6 +325,8 @@ clean: gtest/CMakeFiles/gtest_main.dir/clean
 # Convenience name for "all" pass in the directory.
 bebop_img/all: bebop_img/CMakeFiles/img_canny.dir/all
 bebop_img/all: bebop_img/CMakeFiles/img_disp.dir/all
+bebop_img/all: bebop_img/CMakeFiles/img_hand.dir/all
+bebop_img/all: bebop_img/CMakeFiles/img_perspective.dir/all
 bebop_img/all: bebop_img/CMakeFiles/img_sub.dir/all
 bebop_img/all: bebop_img/CMakeFiles/piloting.dir/all
 .PHONY : bebop_img/all
@@ -336,6 +338,8 @@ bebop_img/clean: bebop_img/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/c
 bebop_img/clean: bebop_img/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 bebop_img/clean: bebop_img/CMakeFiles/img_canny.dir/clean
 bebop_img/clean: bebop_img/CMakeFiles/img_disp.dir/clean
+bebop_img/clean: bebop_img/CMakeFiles/img_hand.dir/clean
+bebop_img/clean: bebop_img/CMakeFiles/img_perspective.dir/clean
 bebop_img/clean: bebop_img/CMakeFiles/img_sub.dir/clean
 bebop_img/clean: bebop_img/CMakeFiles/piloting.dir/clean
 bebop_img/clean: bebop_img/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
@@ -555,13 +559,83 @@ clean: bebop_img/CMakeFiles/img_disp.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target bebop_img/CMakeFiles/img_hand.dir
+
+# All Build rule for target.
+bebop_img/CMakeFiles/img_hand.dir/all:
+	$(MAKE) -f bebop_img/CMakeFiles/img_hand.dir/build.make bebop_img/CMakeFiles/img_hand.dir/depend
+	$(MAKE) -f bebop_img/CMakeFiles/img_hand.dir/build.make bebop_img/CMakeFiles/img_hand.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/eve/code_ws/build/CMakeFiles  5
+	@echo "Built target img_hand"
+.PHONY : bebop_img/CMakeFiles/img_hand.dir/all
+
+# Include target in all.
+all: bebop_img/CMakeFiles/img_hand.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+bebop_img/CMakeFiles/img_hand.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eve/code_ws/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 bebop_img/CMakeFiles/img_hand.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eve/code_ws/build/CMakeFiles 0
+.PHONY : bebop_img/CMakeFiles/img_hand.dir/rule
+
+# Convenience name for target.
+img_hand: bebop_img/CMakeFiles/img_hand.dir/rule
+.PHONY : img_hand
+
+# clean rule for target.
+bebop_img/CMakeFiles/img_hand.dir/clean:
+	$(MAKE) -f bebop_img/CMakeFiles/img_hand.dir/build.make bebop_img/CMakeFiles/img_hand.dir/clean
+.PHONY : bebop_img/CMakeFiles/img_hand.dir/clean
+
+# clean rule for target.
+clean: bebop_img/CMakeFiles/img_hand.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target bebop_img/CMakeFiles/img_perspective.dir
+
+# All Build rule for target.
+bebop_img/CMakeFiles/img_perspective.dir/all:
+	$(MAKE) -f bebop_img/CMakeFiles/img_perspective.dir/build.make bebop_img/CMakeFiles/img_perspective.dir/depend
+	$(MAKE) -f bebop_img/CMakeFiles/img_perspective.dir/build.make bebop_img/CMakeFiles/img_perspective.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/eve/code_ws/build/CMakeFiles  6
+	@echo "Built target img_perspective"
+.PHONY : bebop_img/CMakeFiles/img_perspective.dir/all
+
+# Include target in all.
+all: bebop_img/CMakeFiles/img_perspective.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+bebop_img/CMakeFiles/img_perspective.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eve/code_ws/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 bebop_img/CMakeFiles/img_perspective.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eve/code_ws/build/CMakeFiles 0
+.PHONY : bebop_img/CMakeFiles/img_perspective.dir/rule
+
+# Convenience name for target.
+img_perspective: bebop_img/CMakeFiles/img_perspective.dir/rule
+.PHONY : img_perspective
+
+# clean rule for target.
+bebop_img/CMakeFiles/img_perspective.dir/clean:
+	$(MAKE) -f bebop_img/CMakeFiles/img_perspective.dir/build.make bebop_img/CMakeFiles/img_perspective.dir/clean
+.PHONY : bebop_img/CMakeFiles/img_perspective.dir/clean
+
+# clean rule for target.
+clean: bebop_img/CMakeFiles/img_perspective.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target bebop_img/CMakeFiles/img_sub.dir
 
 # All Build rule for target.
 bebop_img/CMakeFiles/img_sub.dir/all:
 	$(MAKE) -f bebop_img/CMakeFiles/img_sub.dir/build.make bebop_img/CMakeFiles/img_sub.dir/depend
 	$(MAKE) -f bebop_img/CMakeFiles/img_sub.dir/build.make bebop_img/CMakeFiles/img_sub.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/eve/code_ws/build/CMakeFiles  5
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/eve/code_ws/build/CMakeFiles  7
 	@echo "Built target img_sub"
 .PHONY : bebop_img/CMakeFiles/img_sub.dir/all
 
@@ -596,7 +670,7 @@ clean: bebop_img/CMakeFiles/img_sub.dir/clean
 bebop_img/CMakeFiles/piloting.dir/all:
 	$(MAKE) -f bebop_img/CMakeFiles/piloting.dir/build.make bebop_img/CMakeFiles/piloting.dir/depend
 	$(MAKE) -f bebop_img/CMakeFiles/piloting.dir/build.make bebop_img/CMakeFiles/piloting.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/eve/code_ws/build/CMakeFiles  6
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/eve/code_ws/build/CMakeFiles  8
 	@echo "Built target piloting"
 .PHONY : bebop_img/CMakeFiles/piloting.dir/all
 
